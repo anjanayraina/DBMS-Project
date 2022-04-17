@@ -28,10 +28,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="69dp"
-        android:layout_toRightOf="@id/name"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="26dp"
         android:layout_toEndOf="@+id/name"
+        android:layout_toRightOf="@id/name"
         android:text="12pm"
         android:textSize="20sp" />
 
@@ -52,11 +52,11 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="70dp"
 
-        android:textStyle="bold"
-
         android:layout_marginTop="19dp"
+
         android:text="Name of the person"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/line"
@@ -67,6 +67,7 @@
 
         android:layout_marginTop="75dp"
 
+        android:paddingTop="10dp"
         android:text="-----------------------------------------------------------"
         android:textSize="15sp"
         android:textStyle="bold" />
