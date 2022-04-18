@@ -9,7 +9,8 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatActivity extends AppCompatActivity {
+public class MessageActivity extends AppCompatActivity {
+
 
 
     RecyclerView rView ;
@@ -30,11 +31,11 @@ public class ChatActivity extends AppCompatActivity {
 
     private void initRecyclerView(){
 
-rView = findViewById(R.id.recycerView);
-manager  = new LinearLayoutManager(this);
-manager.setOrientation(rView.VERTICAL);
-rView.setLayoutManager(manager);
-adapter = new Adapter(userList);
+        rView = findViewById(R.id.recycerView);
+        manager  = new LinearLayoutManager(this);
+        manager.setOrientation(rView.VERTICAL);
+        rView.setLayoutManager(manager);
+        adapter = new Adapter(userList);
 
 
     }

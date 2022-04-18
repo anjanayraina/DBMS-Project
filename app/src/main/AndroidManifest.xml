@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DBMSProject">
         <activity
-            android:name=".ChatActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".CreateUserActivity"
@@ -22,7 +22,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MessageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
