@@ -4,28 +4,23 @@ import android.widget.ImageView;
 
 public class ModelText {
 
-    private int image;
+
     private String text;
     private String name;
     private String time;
     private String line;
 
 
-    public ModelText(int image, String text, String name, String time, String line) {
-        this.image = image;
+    public ModelText(String text, String name, String time, String line) {
+
         this.text = text;
         this.name = name;
         this.time = time;
         this.line = line;
     }
 
-    public int getImage() {
-        return image;
-    }
 
-    public void setImage(int image) {
-        this.image = image;
-    }
+
 
     public String getText() {
         return text;

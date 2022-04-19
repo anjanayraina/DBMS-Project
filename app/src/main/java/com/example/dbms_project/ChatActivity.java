@@ -43,17 +43,13 @@ adapter = new Adapter(userList);
 
 
         userList = new ArrayList<>();
-        userList.add(new ModelText(R.drawable.user , "Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
-        userList.add(new ModelText(R.drawable.user , "Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
-        userList.add(new ModelText(R.drawable.user , "Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
-        userList.add(new ModelText(R.drawable.user , "Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
-        userList.add(new ModelText(R.drawable.user , "Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
-        userList.add(new ModelText(R.drawable.user , "Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
-        userList.add(new ModelText(R.drawable.user , "Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
-        userList.add(new ModelText(R.drawable.user , "Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
-        userList.add(new ModelText(R.drawable.user , "Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
-        userList.add(new ModelText(R.drawable.user , "Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
-        userList.add(new ModelText(R.drawable.user , "Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
+        userList.add(new ModelText("Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
+        userList.add(new ModelText("Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
+        userList.add(new ModelText("Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
+        userList.add(new ModelText("Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
+        userList.add(new ModelText("Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
+        userList.add(new ModelText("Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
+        userList.add(new ModelText("Hi there !!" , "Anjanay Raina" , "11:34 am" , dots));
 
     }
 }
