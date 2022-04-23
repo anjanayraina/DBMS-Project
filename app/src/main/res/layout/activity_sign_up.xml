@@ -24,7 +24,7 @@
         android:textSize="35dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
@@ -47,12 +47,12 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
-        android:layout_alignRight="@+id/editText"
+        android:layout_below="@+id/userName"
+        android:layout_alignEnd="@+id/userName"
+        android:layout_alignRight="@+id/userName"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:ems="10"
@@ -70,12 +70,12 @@
         android:text="Create Account" />
 
     <Button
+        android:id="@+id/cancel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
-        android:id="@+id/button2"
         android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/textview"
         android:layout_toRightOf="@+id/textview"
-        android:layout_toEndOf="@+id/textview" />
+        android:text="Cancel" />
 
 </RelativeLayout>

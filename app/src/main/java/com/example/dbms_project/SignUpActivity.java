@@ -4,25 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class SignUpActivity extends AppCompatActivity {
 
     private TextView  userName ;
     private TextView password;
-    public boolean checkUserName(String s){
 
-
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        userName = (TextView) findViewById(R.id.editText);
-        password =(TextView) findViewById(R.id.editText2);
+        userName = (EditText) findViewById(R.id.userName);
+        password =(EditText) findViewById(R.id.password);
 
         String userNameString  =userName.toString();
         String passwordString = password.toString();
