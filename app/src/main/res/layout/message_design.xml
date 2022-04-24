@@ -59,6 +59,21 @@
 
         </TextView>
 
+        <TextView
+
+
+            android:id="@+id/readRecipt"
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="31dp"
+            android:layout_marginTop="23dp"
+
+
+            android:layout_toRightOf="@id/textview3"
+            android:text="undelivered" />
+
     </RelativeLayout>
 
 </RelativeLayout>

@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DBMSProject">
         <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".TestActivity"
             android:exported="false" />
         <activity
-            android:name=".MessageActivity"
+            android:name=".ChatActivity"
             android:exported="false" />
         <activity
             android:name=".AllChatsActivity"
@@ -34,6 +37,9 @@
             android:exported="false" />
         <activity
             android:name=".CreateUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MessageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

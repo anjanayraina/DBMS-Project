@@ -40,6 +40,13 @@ public class CreateUserActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET} , PackageManager.PERMISSION_GRANTED);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
+        Button quit = (Button)findViewById(R.id.button2);
+        quit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                QuitApp();
+            }
+        });
         StrictMode.setThreadPolicy(policy);
 
         try {
@@ -71,8 +78,13 @@ public class CreateUserActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
+    public void QuitApp() {
+        CreateUserActivity.this.finish();
+        System.exit(0);
+    }
 
 
     public void createUser() throws SQLException {

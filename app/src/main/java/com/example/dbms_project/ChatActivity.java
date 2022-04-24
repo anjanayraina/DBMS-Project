@@ -22,7 +22,6 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-
         initData();
         initRecyclerView();
 
@@ -30,11 +29,11 @@ public class ChatActivity extends AppCompatActivity {
 
     private void initRecyclerView(){
 
-rView = findViewById(R.id.recycerView);
-manager  = new LinearLayoutManager(this);
-manager.setOrientation(rView.VERTICAL);
-rView.setLayoutManager(manager);
-adapter = new Adapter(userList);
+        rView = findViewById(R.id.recycerView);
+        manager  = new LinearLayoutManager(this);
+        manager.setOrientation(rView.VERTICAL);
+        rView.setLayoutManager(manager);
+        adapter = new Adapter(userList);
 
 
     }
