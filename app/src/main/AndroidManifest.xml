@@ -27,19 +27,19 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SQLActivity"
+            android:name=".CreateUserActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".SQLActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateUserActivity"
+            android:name=".MessageActivity"
             android:exported="false" />
         <activity
-            android:name=".MessageActivity"
+            android:name=".SignUpActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

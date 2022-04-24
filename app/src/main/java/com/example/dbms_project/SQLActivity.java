@@ -75,7 +75,7 @@ public class SQLActivity extends AppCompatActivity {
 
         Statement stmt = conn.createStatement();
 
-        ResultSet rs = stmt.executeQuery("select * from Table_1");
+        ResultSet rs = stmt.executeQuery("select * from SignUpTable");
         if(conn!=null) {
 
             while(rs.next()) {

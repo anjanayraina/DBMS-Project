@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -62,15 +63,14 @@ public class CreateUserActivity extends AppCompatActivity {
 
         }
 
-
-
-
-
         Button create = (Button) findViewById(R.id.button);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 try {
+                    Toast.makeText(getApplicationContext() , "Toast" , Toast.LENGTH_SHORT);
+
                     createUser();
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
@@ -89,22 +89,19 @@ public class CreateUserActivity extends AppCompatActivity {
 
     public void createUser() throws SQLException {
 
-        String firstName = ((EditText)findViewById(R.id.editText)).toString();
-        String lastName  = ((EditText)findViewById(R.id.editText4)).toString();
+        String firstName = ((EditText)findViewById(R.id.editText)).getText().toString();
+        String lastName  = ((EditText)findViewById(R.id.editText4)).getText().toString();
         int age = Integer.parseInt(((EditText)findViewById(R.id.editText5)).getText().toString());
-        String phoneNumber= ((EditText)findViewById(R.id.editText3)).toString();
-        String userName  = ((EditText)findViewById(R.id.editText6)).toString();
-        String password = ((EditText)findViewById(R.id.editText7)).toString();
+        String phoneNumber= ((EditText)findViewById(R.id.editText3)).getText().toString();
+        String userName  = ((EditText)findViewById(R.id.editText6)).getText().toString();
+        String password = ((EditText)findViewById(R.id.editText7)).getText().toString();
 
 
         Statement stmt = conn.createStatement();
 
         @SuppressLint("DefaultLocale") String query = String.format("insert into SignUpTable (firstName , lastName  , age , phoneNumber , userName , password) values" +
-                " ( '%s' , '%s' , %d , '%s' , '%s' , '%s') ;" , firstName , lastName , age , phoneNumber , userName  , password);
+                " ( '%s' , '%s' , %d , '%s' , '%s' , '%s') ;" , firstName , lastName , age , phoneNumber , userName   ,password);
         stmt.executeQuery(query);
-
-
-
 
     }
 }

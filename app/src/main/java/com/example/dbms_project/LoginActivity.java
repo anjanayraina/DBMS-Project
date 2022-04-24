@@ -79,22 +79,26 @@ public class LoginActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean temp = false;
+                boolean temp = true;
                 try {
                     temp = checkForUser();
+
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
+
                 }
 
                 if(!temp){
-
-                    Toast toast = Toast.makeText(getApplicationContext() , "User  Not Found ",  Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext() , "User Not Found ",  Toast.LENGTH_SHORT);
                     toast.show();
+
                 }
 
                 else {
                     Toast toast = Toast.makeText(getApplicationContext() , "User Verified ",  Toast.LENGTH_SHORT);
                     toast.show();
+                    Intent  i = new Intent(LoginActivity.this,  AllChatsActivity.class);
+                    startActivity(i);
 
                 }
             }
@@ -115,14 +119,21 @@ public class LoginActivity extends AppCompatActivity {
     public boolean checkForUser() throws SQLException {
 
 
-        String name = ((EditText) findViewById(R.id.editText)).toString();
-        String pass = ((EditText) findViewById(R.id.editText2)).toString();
+        String name = ((EditText) findViewById(R.id.editText)).getText().toString();
+        String pass = ((EditText) findViewById(R.id.editText2)).getText().toString();
         Statement stmt = conn.createStatement();
-        String query = String.format("select * from SignUpTable where (userName = '%s' AND password = '%s') ", name, pass);
+        String query = "select * from SignUpTable ";
         ResultSet res = stmt.executeQuery(query);
 
-        return !( res  == null);
+        while(res.next()){
 
+            if(String.valueOf(res.getString(5)).equals(name) && String.valueOf(res.getString(6)).equals(pass))return true;
+
+        }
+
+
+
+      return false;
 
 
     }
