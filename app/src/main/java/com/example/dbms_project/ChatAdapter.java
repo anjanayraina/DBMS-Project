@@ -15,12 +15,12 @@ import java.util.List;
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     private List<ChatDisplayModel> userList = new ArrayList<>();
+    private RecyclerViewInterface recyclerViewInterface;
 
 
-
-    public ChatAdapter(List<ChatDisplayModel>userList  ) {
+    public ChatAdapter(List<ChatDisplayModel>userList   , RecyclerViewInterface recyclerViewInterface) {
         this.userList=userList;
-
+        this.recyclerViewInterface = recyclerViewInterface;
 
     }
 
@@ -30,7 +30,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.all_chats_design,parent,false);
-        return new ViewHolder(view );
+        return new ViewHolder(view  , recyclerViewInterface);
 
 
     }
@@ -68,11 +68,19 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
 
 
-        public ViewHolder(@NonNull View itemView)  {
+        public ViewHolder(@NonNull View itemView , RecyclerViewInterface recyclerViewInterface)  {
             super(itemView);
             textView=itemView.findViewById(R.id.textview);
             divider=itemView.findViewById(R.id.Divider);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    int position = getAdapterPosition();
+                    recyclerViewInterface.onItemClick(position);
+                }
+            });
 
         }
 

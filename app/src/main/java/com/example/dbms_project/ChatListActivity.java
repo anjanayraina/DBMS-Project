@@ -4,13 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatListActivity extends AppCompatActivity {
+public class ChatListActivity extends AppCompatActivity implements RecyclerViewInterface {
 
 
     RecyclerView rView ;
@@ -39,7 +41,7 @@ public class ChatListActivity extends AppCompatActivity {
         manager  = new LinearLayoutManager(this);
         manager.setOrientation(rView.VERTICAL);
         rView.setLayoutManager(manager);
-        adapter = new ChatAdapter(userList);
+        adapter = new ChatAdapter(userList , this);
         rView.setAdapter(adapter);
 
 
@@ -61,4 +63,10 @@ public class ChatListActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onItemClick(int position) {
+        Intent  i = new Intent(ChatListActivity.this ,  MessageActivity.class);
+        startActivity(i);
+
+    }
 }
