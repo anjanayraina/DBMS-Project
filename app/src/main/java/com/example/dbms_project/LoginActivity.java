@@ -31,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     //final String url = "jdbc:jtds:sqlserver://"+ip+":"+port+";"+"databasename" + dataBaseName + "; user="+ userName +";"+"password" ;
     final String url = "jdbc:jtds:sqlserver://" + ip + ":" + port + ";" + "databasename=" + dataBaseName + ";user=" + userName + ";password=" + password + ";";
     Connection conn = null;
+    String uid = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +99,8 @@ public class LoginActivity extends AppCompatActivity {
                 else {
                     Toast toast = Toast.makeText(getApplicationContext() , "User Verified ",  Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent  i = new Intent(LoginActivity.this,  AllChatsActivity.class);
+                    Intent  i = new Intent(LoginActivity.this,  ChatListActivity.class);
+                    i.putExtra("userID", uid);
                     startActivity(i);
 
                 }
@@ -122,12 +125,17 @@ public class LoginActivity extends AppCompatActivity {
         String name = ((EditText) findViewById(R.id.editText)).getText().toString();
         String pass = ((EditText) findViewById(R.id.editText2)).getText().toString();
         Statement stmt = conn.createStatement();
-        String query = "select * from SignUpTable ";
+        String query = "select * from users ";
         ResultSet res = stmt.executeQuery(query);
 
         while(res.next()){
 
-            if(String.valueOf(res.getString(5)).equals(name) && String.valueOf(res.getString(6)).equals(pass))return true;
+            if(String.valueOf(res.getString(4)).equals(name) && String.valueOf(res.getString(7)).equals(pass)){
+
+                uid = String.valueOf(res.getString(1));
+                return true;
+
+            }
 
         }
 

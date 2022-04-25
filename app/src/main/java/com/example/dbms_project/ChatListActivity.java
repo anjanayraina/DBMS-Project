@@ -21,11 +21,14 @@ public class ChatListActivity extends AppCompatActivity implements RecyclerViewI
     List<ChatDisplayModel> userList;
     ChatAdapter adapter;
     public final String dots = "--------------------------------------------------------------------";
+    String uid = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_list);
 
+        uid = getIntent().getStringExtra("userID");
 
         initData();
         initRecyclerView();
@@ -36,6 +39,16 @@ public class ChatListActivity extends AppCompatActivity implements RecyclerViewI
             @Override
             public void onClick(View view) {
                 Intent i= new Intent(ChatListActivity.this  , CreateContactAcitivy.class);
+                startActivity(i);
+
+            }
+        });
+
+        Button group  = (Button) findViewById(R.id.button11);
+        group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ChatListActivity.this , CreateGroupChatActivity.class);
                 startActivity(i);
 
             }

@@ -42,13 +42,13 @@
             android:name=".SQLActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ChatListActivity"
             android:exported="false" />
         <activity
             android:name=".MessageActivity"
             android:exported="false" />
         <activity
-            android:name=".ChatListActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
