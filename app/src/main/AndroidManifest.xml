@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DBMSProject">
         <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
@@ -39,7 +42,7 @@
             android:name=".MessageActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".ChatListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
