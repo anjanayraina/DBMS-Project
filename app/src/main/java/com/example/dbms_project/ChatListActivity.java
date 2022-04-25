@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,6 +29,17 @@ public class ChatListActivity extends AppCompatActivity implements RecyclerViewI
 
         initData();
         initRecyclerView();
+
+        Button btn  =(Button) findViewById(R.id.button9);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(ChatListActivity.this  , CreateContactAcitivy.class);
+                startActivity(i);
+
+            }
+        });
 
 
     }
@@ -58,7 +70,6 @@ public class ChatListActivity extends AppCompatActivity implements RecyclerViewI
         userList.add(new ChatDisplayModel("Anjanay Raina" , dots , "23"));
         userList.add(new ChatDisplayModel("Anjanay Raina" , dots , "23"));
         userList.add(new ChatDisplayModel("Anjanay Raina" , dots , "23"));
-
 
 
     }
