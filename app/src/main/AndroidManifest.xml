@@ -27,7 +27,7 @@
             android:name=".TestActivity"
             android:exported="false" />
         <activity
-            android:name=".ChatActivity"
+            android:name=".CreateUserActivity"
             android:exported="false" />
         <activity
             android:name=".AllChatsActivity"
@@ -36,7 +36,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateUserActivity"
+            android:name=".ChatActivity"
             android:exported="false" />
         <activity
             android:name=".SQLActivity"

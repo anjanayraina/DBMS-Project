@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -31,6 +32,8 @@ public class CreateUserActivity extends AppCompatActivity {
     //final String url = "jdbc:jtds:sqlserver://"+ip+":"+port+";"+"databasename" + dataBaseName + "; user="+ userName +";"+"password" ;
     final String url = "jdbc:jtds:sqlserver://"+ ip + ":"+ port+";"+ "databasename="+ dataBaseName+";user="+userName+";password="+password+";";
     Connection conn = null;
+    String uid = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +72,16 @@ public class CreateUserActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 try {
-                    Toast.makeText(getApplicationContext() , "Toast" , Toast.LENGTH_SHORT);
-
                     createUser();
+                    Toast.makeText(getApplicationContext() , "User Created" , Toast.LENGTH_SHORT);
+                    Intent i = new Intent(CreateUserActivity.this  ,ChatListActivity.class);
+                    i.putExtra("userID" , uid);
+                    startActivity(i);
                 } catch (SQLException throwables) {
-                    throwables.printStackTrace();
+                    Toast.makeText(getApplicationContext() , "User Created" , Toast.LENGTH_SHORT);
+                    Intent i = new Intent(CreateUserActivity.this  ,ChatListActivity.class);
+                    i.putExtra("userID" , uid);
+                    startActivity(i);
                 }
             }
         });
@@ -99,9 +107,23 @@ public class CreateUserActivity extends AppCompatActivity {
 
         Statement stmt = conn.createStatement();
 
-        @SuppressLint("DefaultLocale") String query = String.format("insert into SignUpTable (firstName , lastName  , age , phoneNumber , userName , password) values" +
+        @SuppressLint("DefaultLocale") String query = String.format("insert into users (firstName , lastName  , age , phoneNumber , userName , password) values" +
                 " ( '%s' , '%s' , %d , '%s' , '%s' , '%s') ;" , firstName , lastName , age , phoneNumber , userName   ,password);
-        stmt.executeQuery(query);
+
+
+      try {
+          ResultSet temp = stmt.executeQuery(query);
+      }
+
+      catch (Exception e){
+
+          String newStmt = String.format("select userID from users where username = '%s' AND password = '%s'" , userName , password);
+          ResultSet rs = stmt.executeQuery(newStmt);
+          uid  = rs.getString(1).toString();
+      }
+
+
+
 
     }
 }

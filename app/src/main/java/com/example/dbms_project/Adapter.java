@@ -78,14 +78,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         }
 
         public void setData( String name, String msg, String time,String line) {
-
-
             textView.setText(name);
             textView2.setText(msg);
             textview3.setText(time);
             divider.setText(line);
-
-
 
         }
     }
