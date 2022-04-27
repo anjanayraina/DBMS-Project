@@ -35,8 +35,6 @@ public class CreateContactAcitivy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_contact_acitivy);
         EditText userName  = (EditText) findViewById(R.id.userName);
-        EditText firstChat = (EditText) findViewById(R.id.firstChat);
-
         Button create = (Button)findViewById(R.id.createContact);
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
@@ -55,7 +53,7 @@ public class CreateContactAcitivy extends AppCompatActivity {
 
         }
 
-        String query = String.format("select * from directchats ");
+        String query = String.format("insert into DirectChats (userID , contactID, DirectChatID , ClearChat) values (%s , %s , %s , %s); ", );
         Statement stmt = null;
 
 
@@ -71,6 +69,9 @@ public class CreateContactAcitivy extends AppCompatActivity {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+
+
 
     }
 }

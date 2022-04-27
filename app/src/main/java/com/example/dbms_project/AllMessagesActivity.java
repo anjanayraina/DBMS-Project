@@ -18,6 +18,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.HashMap;
 
 public class AllMessagesActivity extends AppCompatActivity {
@@ -103,7 +104,7 @@ public class AllMessagesActivity extends AppCompatActivity {
                     String messageID = res.getString("messageID");
                     String userID = res.getString("senderID");
                     String messageStatus = res.getString("messageStatus");
-                    array[count].setText(hashMap.get(userID) + "\n" + res.getString("body"));
+                    array[count].setText(hashMap.get(userID) + "\n" + res.getString("body") + "   " + res.getString("SendingTime"));
 
                     array[count].setVisibility(View.VISIBLE);
                     count++;
@@ -122,10 +123,32 @@ public class AllMessagesActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String query = "";
+                String query = String.format("insert into messages (senderID  , body , sendingTime , DirectChatID , DeleteMessage , MessageStatus) values (%s , '%s' , '%s' , %s , %d , %d)  " ,
+                        uid  , text.getText().toString() , String.valueOf(new Timestamp(System.currentTimeMillis())), directChatID, 0, 1);
+                Statement stmt = null;
+                try {
+                    stmt = conn.createStatement();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                try {
+                    ResultSet res = stmt.executeQuery(query);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
 
+                text.setText("");
             }
         });
+
+
+      TextView refresh =  (TextView) findViewById(R.id.textView50);
+      refresh.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              recreate();
+          }
+      });
 
 
     }
