@@ -80,6 +80,7 @@ public class AllChats extends AppCompatActivity {
 
         }
 
+
         String query = "select * from directchats ";
         Statement stmt = null;
 
@@ -110,6 +111,8 @@ public class AllChats extends AppCompatActivity {
                 try {
                     String contact =  res.getString("contactID");
                     String user = res.getString("userID");
+                    String directChatID =  res.getString("directChatID");
+
                     if(res.getString("userid").equals(uid) ){
 
 
@@ -122,6 +125,7 @@ public class AllChats extends AppCompatActivity {
                                 i.putExtra("hashMap" , hashMap);
                                 i.putExtra("userID" , uid);
                                 i.putExtra("contactID" ,contact);
+                                i.putExtra("directChatID" ,directChatID);
                                 startActivity(i);
                             }
                         });
@@ -139,6 +143,7 @@ public class AllChats extends AppCompatActivity {
                                 i.putExtra("hashMap" , hashMap);
                                 i.putExtra("userID" , uid);
                                 i.putExtra("contactID" ,user);
+                                i.putExtra("directChatID" ,directChatID);
                                 startActivity(i);
                             }
                         });

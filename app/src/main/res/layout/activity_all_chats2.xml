@@ -79,8 +79,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="408dp"
-        android:layout_height="547dp"
+        android:layout_width="411dp"
+        android:layout_height="515dp"
         android:layout_marginTop="35dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -161,10 +161,10 @@
         android:textSize="10dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.892"
+        app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button11"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.468" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
