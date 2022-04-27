@@ -125,6 +125,7 @@ public class ChatListActivity extends AppCompatActivity implements RecyclerViewI
 
             String newStmt = "select username from users where userid = " + res.getString("userid").toString();
 
+
             Connection newConn = null;
 
             try {

@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/anjan/AndroidStudioProjects/DBMSProject2/app/src/main/res/layout/activity_all_chats.xml" value="0.25" />
+        <entry key="..\:/Users/anjan/AndroidStudioProjects/DBMSProject2/app/src/main/res/layout/activity_all_chats2.xml" value="0.25" />
+        <entry key="..\:/Users/anjan/AndroidStudioProjects/DBMSProject2/app/src/main/res/layout/activity_all_messages.xml" value="0.264" />
         <entry key="..\:/Users/anjan/AndroidStudioProjects/DBMSProject2/app/src/main/res/layout/activity_chat.xml" value="0.2" />
         <entry key="..\:/Users/anjan/AndroidStudioProjects/DBMSProject2/app/src/main/res/layout/activity_chat_list.xml" value="0.2" />
         <entry key="..\:/Users/anjan/AndroidStudioProjects/DBMSProject2/app/src/main/res/layout/activity_create_contact_acitivy.xml" value="0.25" />

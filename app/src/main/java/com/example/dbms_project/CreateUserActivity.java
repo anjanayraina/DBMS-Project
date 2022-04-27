@@ -74,12 +74,12 @@ public class CreateUserActivity extends AppCompatActivity {
                 try {
                     createUser();
                     Toast.makeText(getApplicationContext() , "User Created" , Toast.LENGTH_SHORT);
-                    Intent i = new Intent(CreateUserActivity.this  ,ChatListActivity.class);
+                    Intent i = new Intent(CreateUserActivity.this  ,LoginActivity.class);
                     i.putExtra("userID" , uid);
                     startActivity(i);
                 } catch (SQLException throwables) {
                     Toast.makeText(getApplicationContext() , "User Created" , Toast.LENGTH_SHORT);
-                    Intent i = new Intent(CreateUserActivity.this  ,ChatListActivity.class);
+                    Intent i = new Intent(CreateUserActivity.this  ,LoginActivity.class);
                     i.putExtra("userID" , uid);
                     startActivity(i);
                 }

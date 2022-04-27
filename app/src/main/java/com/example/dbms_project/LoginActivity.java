@@ -19,6 +19,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,12 +34,15 @@ public class LoginActivity extends AppCompatActivity {
     Connection conn = null;
     String uid = "";
 
+    public HashMap<String , String > hashMap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+hashMap = new HashMap<>();
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -99,8 +103,9 @@ public class LoginActivity extends AppCompatActivity {
                 else {
                     Toast toast = Toast.makeText(getApplicationContext() , "User Verified ",  Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent  i = new Intent(LoginActivity.this,  ChatListActivity.class);
+                    Intent  i = new Intent(LoginActivity.this,  AllChats.class);
                     i.putExtra("userID", uid);
+                    i.putExtra("hashMap" , hashMap);
                     startActivity(i);
 
                 }
@@ -128,12 +133,16 @@ public class LoginActivity extends AppCompatActivity {
         String query = "select * from users ";
         ResultSet res = stmt.executeQuery(query);
 
+        boolean result = false;
         while(res.next()){
+
+            hashMap.put(res.getString("userid" ) , res.getString("username"));
 
             if(String.valueOf(res.getString("username")).equals(name) && String.valueOf(res.getString("password")).equals(pass)){
 
+
                 uid = String.valueOf(res.getString(1));
-                return true;
+               result = true;
 
             }
 
@@ -141,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-      return false;
+      return result;
 
 
     }

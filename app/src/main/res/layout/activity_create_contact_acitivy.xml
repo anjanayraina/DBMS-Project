@@ -7,7 +7,7 @@
     tools:context=".CreateContactAcitivy">
 
     <EditText
-        android:id="@+id/textView8"
+        android:id="@+id/firstChat"
         android:layout_width="227dp"
         android:layout_height="48dp"
         android:hint="Enter your first chat"
@@ -35,7 +35,7 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <EditText
-        android:id="@+id/textView7"
+        android:id="@+id/username"
         android:layout_width="227dp"
         android:layout_height="48dp"
         android:text=""
@@ -47,13 +47,13 @@
         app:layout_constraintVertical_bias="0.146" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/createContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Contact"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/firstChat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

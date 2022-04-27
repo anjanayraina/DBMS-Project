@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DBMSProject">
         <activity
+            android:name=".AllMessagesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllChats"
+            android:exported="false" />
+        <activity
             android:name=".CreateGroupChatActivity"
             android:exported="false" />
         <activity
