@@ -19,6 +19,8 @@ public class MessageActivity extends AppCompatActivity {
     Adapter adapter;
     public final String dots = "--------------------------------------------------------------------";
 
+    String uid  = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

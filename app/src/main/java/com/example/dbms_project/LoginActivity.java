@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
 
         while(res.next()){
 
-            if(String.valueOf(res.getString(4)).equals(name) && String.valueOf(res.getString(7)).equals(pass)){
+            if(String.valueOf(res.getString("username")).equals(name) && String.valueOf(res.getString("password")).equals(pass)){
 
                 uid = String.valueOf(res.getString(1));
                 return true;

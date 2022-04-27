@@ -101,8 +101,6 @@ public class ChatListActivity extends AppCompatActivity implements RecyclerViewI
     public  void initRecyclerView(){
 
         rView = findViewById(R.id.recycerView);
-
-
         manager  = new LinearLayoutManager(this);
         manager.setOrientation(rView.VERTICAL);
         rView.setLayoutManager(manager);
@@ -117,16 +115,33 @@ public class ChatListActivity extends AppCompatActivity implements RecyclerViewI
 
         userList = new ArrayList<>();
 
-        String query = "select * from directchats where userid = " + uid + " OR where contactID = " + uid;
+        String query = "select * from directchats where userid = " + uid + " OR contactID = " + uid;
         Statement stmt = conn.createStatement();
 
         ResultSet res = stmt.executeQuery(query);
 
         while(res.next()){
 
-            String newStmt = "select username from users where userid = " + res.getString(3);
-            ResultSet tempSet = conn.createStatement().executeQuery(newStmt);
-            userList.add(new ChatDisplayModel(tempSet.getString(1).toString() , dots , uid , res.getString(3)));
+
+            String newStmt = "select username from users where userid = " + res.getString("userid").toString();
+
+            Connection newConn = null;
+
+            try {
+                Class.forName(className);
+
+                newConn = DriverManager.getConnection(url);
+
+            } catch (Exception e) {
+
+                Log.e("connection", String.valueOf(e.getStackTrace()));
+
+            }
+
+            ResultSet tempSet = newConn.createStatement().executeQuery(newStmt);
+            if(tempSet.next())continue;
+
+            userList.add(new ChatDisplayModel(tempSet.getString("username").toString() , dots , uid , res.getString("userid").toString()));
 
         }
 

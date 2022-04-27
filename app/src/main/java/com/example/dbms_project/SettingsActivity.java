@@ -23,10 +23,14 @@ public class SettingsActivity extends AppCompatActivity {
         String status = profileStatus.getText().toString();
         String userNameString = userName.getText().toString();
         String phoneNumberString  = phoneNumber.getText().toString();
+        String firstNameString  = firstName.getText().toString();
+        String lastNameString  = lastName.getText().toString();
+
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
             }
         });
