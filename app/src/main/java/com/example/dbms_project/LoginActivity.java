@@ -103,7 +103,7 @@ hashMap = new HashMap<>();
                 else {
                     Toast toast = Toast.makeText(getApplicationContext() , "User Verified ",  Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent  i = new Intent(LoginActivity.this,  AllChats.class);
+                    Intent  i = new Intent(LoginActivity.this,  LandingScreenActivity.class);
                     i.putExtra("userID", uid);
                     i.putExtra("hashMap" , hashMap);
                     startActivity(i);

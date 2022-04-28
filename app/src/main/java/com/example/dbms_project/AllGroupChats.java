@@ -8,8 +8,9 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +19,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
-public class CreateContactAcitivy extends AppCompatActivity {
+public class AllGroupChats extends AppCompatActivity {
+
     String uid = "";
     final String ip = "192.168.51.22";
     final String port = "1433";
@@ -33,9 +35,7 @@ public class CreateContactAcitivy extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_contact_acitivy);
-        EditText userName  = (EditText) findViewById(R.id.userName);
-        Button create = (Button)findViewById(R.id.createContact);
+        setContentView(R.layout.activity_all_group_chats);
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -52,8 +52,25 @@ public class CreateContactAcitivy extends AppCompatActivity {
             Log.e("connection", String.valueOf(e.getStackTrace()));
 
         }
+        String temp = "button";
+        uid = getIntent().getStringExtra("userID");
+        hashMap = (HashMap<String, String>) getIntent().getExtras().get("hashMap");
+        String directChatID = getIntent().getStringExtra("directChatID");
+        Button array [] = new Button[8];
 
-        String query = String.format("insert into DirectChats (userID , contactID, DirectChatID , ClearChat) values (%s , %s , %s , %s); ");
+        for(int i=16;i<24;i++){
+            String button = temp + i;
+
+            int resID = getResources().getIdentifier(button, "id", getPackageName());
+            Button btn = findViewById(resID);
+            btn.setVisibility(View.GONE);
+
+
+            array[i-16] = btn;
+
+        }
+
+        String query = "select * from messages ";
         Statement stmt = null;
 
 
@@ -69,8 +86,37 @@ public class CreateContactAcitivy extends AppCompatActivity {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        int count = 0;
+
+        if(res != null) {
+            while (true) {
+                try {
+                    if (!res.next()) break;
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
 
 
+                try{
+                    Toast.makeText(getApplicationContext() , "This Activity Called !!" , Toast.LENGTH_LONG).show();
+                    String messageID = res.getString("messageID");
+                    String userID = res.getString("senderID");
+                    String messageStatus = res.getString("messageStatus");
+
+                    if(directChatID.equals(res.getString("directChatID"))) {
+                        array[count].setText(hashMap.get(userID) + "\n" + res.getString("body"));
+                        array[count].setVisibility(View.VISIBLE);
+                        count++;
+                    }
+                }
+
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
 
 
     }

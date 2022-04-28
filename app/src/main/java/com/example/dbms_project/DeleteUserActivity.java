@@ -10,16 +10,15 @@ import android.os.StrictMode;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
 
-public class CreateContactAcitivy extends AppCompatActivity {
-    String uid = "";
+public class DeleteUserActivity extends AppCompatActivity {
     final String ip = "192.168.51.22";
     final String port = "1433";
     final String className = "net.sourceforge.jtds.jdbc.Driver";
@@ -29,13 +28,14 @@ public class CreateContactAcitivy extends AppCompatActivity {
     //final String url = "jdbc:jtds:sqlserver://"+ip+":"+port+";"+"databasename" + dataBaseName + "; user="+ userName +";"+"password" ;
     final String url = "jdbc:jtds:sqlserver://" + ip + ":" + port + ";" + "databasename=" + dataBaseName + ";user=" + userName + ";password=" + password + ";";
     Connection conn = null;
-    HashMap<String , String> hashMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_contact_acitivy);
-        EditText userName  = (EditText) findViewById(R.id.userName);
-        Button create = (Button)findViewById(R.id.createContact);
+        setContentView(R.layout.activity_delete_user);
+
+        String uid = getIntent().getStringExtra("userID");
+        Button delete  = (Button)findViewById(R.id.button31);
+
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -52,26 +52,21 @@ public class CreateContactAcitivy extends AppCompatActivity {
             Log.e("connection", String.valueOf(e.getStackTrace()));
 
         }
-
-        String query = String.format("insert into DirectChats (userID , contactID, DirectChatID , ClearChat) values (%s , %s , %s , %s); ");
         Statement stmt = null;
-
-
+        ResultSet res = null;
         try {
             stmt = conn.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-        ResultSet res =null;
+        String query = "delete from users where userid = " + uid;
         try {
+            Toast.makeText(getApplicationContext() , "User Deleted" , Toast.LENGTH_LONG);
             res = stmt.executeQuery(query);
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
-
 
     }
 }
