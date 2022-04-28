@@ -56,7 +56,7 @@ public class GroupChatMessageActivity extends AppCompatActivity {
         }
         String temp = "textView";
         uid = getIntent().getStringExtra("userID");
-      gID = getIntent().getStringExtra("GroupChatID");
+      gID = getIntent().getStringExtra("groupChatID");
         hashMap = (HashMap<String, String>) getIntent().getExtras().get("hashMap");
 
 Log.e("Error" , gID);

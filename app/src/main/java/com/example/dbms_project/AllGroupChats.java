@@ -55,7 +55,7 @@ public class AllGroupChats extends AppCompatActivity {
         String temp = "button";
         uid = getIntent().getStringExtra("userID");
         hashMap = (HashMap<String, String>) getIntent().getExtras().get("hashMap");
-        String directChatID = getIntent().getStringExtra("directChatID");
+        String directChatID = getIntent().getStringExtra("groupChatID");
         Button array [] = new Button[8];
 
         for(int i=16;i<24;i++){
@@ -103,7 +103,7 @@ public class AllGroupChats extends AppCompatActivity {
                     String userID = res.getString("senderID");
                     String messageStatus = res.getString("messageStatus");
 
-                    if(directChatID.equals(res.getString("directChatID"))) {
+                    if(directChatID.equals(res.getString("groupChatID"))) {
                         array[count].setText(hashMap.get(userID) + "\n" + res.getString("body"));
                         array[count].setVisibility(View.VISIBLE);
                         count++;
