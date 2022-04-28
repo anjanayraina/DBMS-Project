@@ -41,7 +41,10 @@ public class LandingScreenActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
+
         StrictMode.setThreadPolicy(policy);
+
+        Button settings = (Button) findViewById(R.id.button15);
 
         try {
             Class.forName(className);
@@ -89,6 +92,16 @@ public class LandingScreenActivity extends AppCompatActivity {
 
         }
 
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent  i = new Intent(LandingScreenActivity.this,  SettingsActivity.class);
+                i.putExtra("userID", uid);
+                i.putExtra("hashMap" , hashMap);
+
+                startActivity(i);
+            }
+        });
         directChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
