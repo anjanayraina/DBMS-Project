@@ -128,7 +128,11 @@ public class AllChats extends AppCompatActivity {
                                 i.putExtra("directChatID" ,directChatID);
                                 startActivity(i);
                             }
+
+
                         });
+
+
                         count++;
                     }
 

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -106,6 +107,14 @@ Log.e("Error" , gID);
                     String messageStatus = res.getString("messageStatus");
                     array[count].setText(hashMap.get(userID) + "\n" + res.getString("body") + "   " + res.getString("SendingTime"));
                     array[count].setVisibility(View.VISIBLE);
+                    array[count].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent(GroupChatMessageActivity.this,  MessageDeleteActivity.class);
+                            i.putExtra("messageID" , messageID);
+                            startActivity(i);
+                        }
+                    });
                     count++;
 
                 } catch (Exception e) {

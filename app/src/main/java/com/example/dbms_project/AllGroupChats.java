@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -106,6 +107,15 @@ public class AllGroupChats extends AppCompatActivity {
                     if(directChatID.equals(res.getString("groupChatID"))) {
                         array[count].setText(hashMap.get(userID) + "\n" + res.getString("body"));
                         array[count].setVisibility(View.VISIBLE);
+                        array[count].setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent i = new Intent(AllGroupChats.this,  MessageDeleteActivity.class);
+                                i.putExtra("messageID" , messageID);
+                                startActivity(i);
+                            }
+                        });
+
                         count++;
                     }
                 }

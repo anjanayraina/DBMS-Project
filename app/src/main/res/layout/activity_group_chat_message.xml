@@ -181,19 +181,19 @@
     </LinearLayout>
 
     <TextView
-        android:background="#ADD8E6"
         android:id="@+id/textView50"
         android:layout_width="101dp"
         android:layout_height="33dp"
+        android:background="#ADD8E6"
         android:text="Refresh"
         android:textAlignment="center"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.28" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/textView51"
