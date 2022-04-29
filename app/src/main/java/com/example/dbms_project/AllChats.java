@@ -56,11 +56,12 @@ public class AllChats extends AppCompatActivity {
         hashMap = (HashMap<String, String>) getIntent().getExtras().get("hashMap");
         Button array [] = new Button[8];
         Button newChat = findViewById(R.id.button14);
+
         newChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(AllChats.this , AllMessagesActivity.class);
+                Intent i = new Intent(AllChats.this , CreateContactAcitivy.class);
                 i.putExtra("hashMap" , hashMap);
                 i.putExtra("userID" , uid);
 
@@ -161,6 +162,16 @@ public class AllChats extends AppCompatActivity {
 
                 }
 
+
+        Button refresh = (Button)findViewById(R.id.button24);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recreate();
             }
+        });
+            }
+
+
 }
 

@@ -36,16 +36,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         String userID = getIntent().getStringExtra("userID");
         EditText profileStatus = (EditText) findViewById(R.id.button3);
-        EditText firstName = (EditText) findViewById(R.id.button12);
-        EditText lastName = (EditText) findViewById(R.id.button5);
-        EditText phoneNumber = (EditText) findViewById(R.id.button6);
-        EditText userName = (EditText) findViewById(R.id.button4);
+
         Button save = (Button) findViewById(R.id.button7);
         String status = profileStatus.getText().toString();
-        String userNameString = userName.getText().toString();
-        String phoneNumberString  = phoneNumber.getText().toString();
-        String firstNameString  = firstName.getText().toString();
-        String lastNameString  = lastName.getText().toString();
+
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -68,8 +62,6 @@ public class SettingsActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String query = String.format("UPDATE users SET username = '%s' , firstName = '%s' , " +
-                        " lastName = '%s' , phonenumber = '%s' WHERE userID = %s " , userNameString , firstNameString, lastNameString , phoneNumberString , userID);
                 Statement stmt = null;
 
 
@@ -79,21 +71,8 @@ public class SettingsActivity extends AppCompatActivity {
                     throwables.printStackTrace();
                 }
 
-                ResultSet res = null;
-                try {
-                    res = stmt.executeQuery(query);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-
-                try {
-                    stmt = conn.createStatement();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-
-                res = null;
-                query = String.format("UPDATE settings SET profilestatus = '%s' , lastseen = '%s' WHERE userID = %s " ,
+               ResultSet res = null;
+                String query = String.format("UPDATE settings SET profilestatus = '%s' , lastseen = '%s' WHERE userID = %s " ,
                         profileStatus.getText().toString()
                         ,String.valueOf(new Timestamp(System.currentTimeMillis())) , userID);
                 try {

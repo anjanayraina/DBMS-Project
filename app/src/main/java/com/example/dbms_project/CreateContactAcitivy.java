@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -34,7 +36,7 @@ public class CreateContactAcitivy extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_contact_acitivy);
-        EditText userName  = (EditText) findViewById(R.id.userName);
+        EditText userName  = (EditText) findViewById(R.id.username);
         Button create = (Button)findViewById(R.id.createContact);
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
@@ -42,6 +44,8 @@ public class CreateContactAcitivy extends AppCompatActivity {
 
         StrictMode.setThreadPolicy(policy);
 
+        String uid = getIntent().getStringExtra("userID");
+        String contactID = ((EditText) findViewById(R.id.username)).getText().toString();
         try {
             Class.forName(className);
 
@@ -53,22 +57,31 @@ public class CreateContactAcitivy extends AppCompatActivity {
 
         }
 
-        String query = String.format("insert into DirectChats (userID , contactID, DirectChatID , ClearChat) values (%s , %s , %s , %s); ");
-        Statement stmt = null;
+        String userNameString = userName.getText().toString();
+
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                @SuppressLint("DefaultLocale") String query = String.format("insert into DirectChats (userID , contactID , ClearChat) values (%s , %s , %d) ; " , uid ,contactID , 0 );
+                Statement stmt = null;
 
 
-        try {
-            stmt = conn.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+                try {
+                    stmt = conn.createStatement();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
 
-        ResultSet res =null;
-        try {
-            res = stmt.executeQuery(query);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+                ResultSet res =null;
+                try {
+                    res = stmt.executeQuery(query);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+        });
+
+
 
 
 
