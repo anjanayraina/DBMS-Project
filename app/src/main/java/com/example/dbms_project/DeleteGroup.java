@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import java.sql.Connection;
@@ -18,7 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DeleteUserActivity extends AppCompatActivity {
+public class DeleteGroup extends AppCompatActivity {
     final String ip = "192.168.51.22";
     final String port = "1433";
     final String className = "net.sourceforge.jtds.jdbc.Driver";
@@ -31,11 +30,9 @@ public class DeleteUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delete_user);
-
-        String uid = getIntent().getStringExtra("userID");
-        Button delete  = (Button)findViewById(R.id.button31);
-
+        setContentView(R.layout.activity_delete_group);
+        Button delete = (Button)findViewById(R.id.delete);
+        String gID = getIntent().getStringExtra("GroupID");
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -59,11 +56,9 @@ public class DeleteUserActivity extends AppCompatActivity {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-       // String query = "delete from users where userid = " + uid;
-        String query =  "exec usercascade @ID = " + uid ;
-
+          String query =  "exec groupcascade @ID = " + gID;
         try {
-            Toast.makeText(getApplicationContext() , "User Deleted" , Toast.LENGTH_LONG);
+            Toast.makeText(getApplicationContext() , "Group Deleted" , Toast.LENGTH_LONG);
             res = stmt.executeQuery(query);
 
         } catch (SQLException throwables) {

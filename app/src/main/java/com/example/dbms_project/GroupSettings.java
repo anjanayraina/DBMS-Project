@@ -4,15 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +19,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
-public class CreateContactAcitivy extends AppCompatActivity {
+public class GroupSettings extends AppCompatActivity {
+
     String uid = "";
     final String ip = "192.168.51.22";
     final String port = "1433";
@@ -32,16 +31,15 @@ public class CreateContactAcitivy extends AppCompatActivity {
     //final String url = "jdbc:jtds:sqlserver://"+ip+":"+port+";"+"databasename" + dataBaseName + "; user="+ userName +";"+"password" ;
     final String url = "jdbc:jtds:sqlserver://" + ip + ":" + port + ";" + "databasename=" + dataBaseName + ";user=" + userName + ";password=" + password + ";";
     Connection conn = null;
-    HashMap<String , String > hashMap;
+    HashMap<String , String> hashMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_contact_acitivy);
-        hashMap = new HashMap<>();
-        hashMap = (HashMap<String, String>) getIntent().getExtras().get("hashMap");
+        setContentView(R.layout.activity_group_settings);
 
-        EditText userName  = (EditText) findViewById(R.id.username);
-        Button create = (Button)findViewById(R.id.createContact);
+        Button deleteGroup = (Button)findViewById(R.id.button4);
+        Button addMember = (Button) findViewById(R.id.button5);
+        Button removeUser= (Button) findViewById(R.id.button6);
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -49,13 +47,8 @@ public class CreateContactAcitivy extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         String uid = getIntent().getStringExtra("userID");
-        EditText contact = (EditText)findViewById(R.id.username);
 
-
-
-
-
-
+        String groupID = getIntent().getStringExtra("GroupID");
 
         try {
             Class.forName(className);
@@ -68,35 +61,16 @@ public class CreateContactAcitivy extends AppCompatActivity {
 
         }
 
-        String userNameString = userName.getText().toString();
 
-        create.setOnClickListener(new View.OnClickListener() {
+        deleteGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String contactID = getIntent().getStringExtra("contactID");
-
-                @SuppressLint("DefaultLocale") String query = String.format("insert into DirectChats (userID , contactID , ClearChat) values (%s , %s , %d) ; " , uid ,contactID, 0 );
-                Statement stmt = null;
-
-
-                try {
-                    stmt = conn.createStatement();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-
-                ResultSet res =null;
-                try {
-                    res = stmt.executeQuery(query);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+               Intent i = new Intent(GroupSettings.this , DeleteGroup.class);
+               i.putExtra("GroupID" , groupID);
+               startActivity(i);
             }
+
         });
-
-
-
-
 
 
     }

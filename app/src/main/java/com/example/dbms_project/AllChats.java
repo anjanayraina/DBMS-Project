@@ -31,6 +31,8 @@ public class AllChats extends AppCompatActivity {
     //final String url = "jdbc:jtds:sqlserver://"+ip+":"+port+";"+"databasename" + dataBaseName + "; user="+ userName +";"+"password" ;
     final String url = "jdbc:jtds:sqlserver://" + ip + ":" + port + ";" + "databasename=" + dataBaseName + ";user=" + userName + ";password=" + password + ";";
     Connection conn = null;
+    String contact  = "";
+
     HashMap<String , String> hashMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +59,16 @@ public class AllChats extends AppCompatActivity {
         Button array [] = new Button[8];
         Button newChat = findViewById(R.id.button14);
 
+
         newChat.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
                 Intent i = new Intent(AllChats.this , CreateContactAcitivy.class);
                 i.putExtra("hashMap" , hashMap);
                 i.putExtra("userID" , uid);
+                i.putExtra("contactID" ,contact);
 
                 startActivity(i);
             }
@@ -110,7 +115,7 @@ public class AllChats extends AppCompatActivity {
                 }
 
                 try {
-                    String contact =  res.getString("contactID");
+                     contact =  res.getString("contactID");
                     String user = res.getString("userID");
                     String directChatID =  res.getString("directChatID");
 

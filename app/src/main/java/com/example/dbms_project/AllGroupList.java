@@ -67,7 +67,7 @@ public class AllGroupList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(AllGroupList.this , GroupChatMessageActivity.class);
+                Intent i = new Intent(AllGroupList.this , CreateGroupChatActivity.class);
                 i.putExtra("hashMap" , hashMap);
                 i.putExtra("userID" , uid);
 

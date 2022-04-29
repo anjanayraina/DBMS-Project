@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DBMSProject">
         <activity
+            android:name=".DeleteGroup"
+            android:exported="false" />
+        <activity
+            android:name=".DeleteUser"
+            android:exported="false" />
+        <activity
+            android:name=".AddMember"
+            android:exported="false" />
+        <activity
+            android:name=".GroupSettings"
+            android:exported="false" />
+        <activity
             android:name=".ProfileDisplay"
             android:exported="false" />
         <activity
