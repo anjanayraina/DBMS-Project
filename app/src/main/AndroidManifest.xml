@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DBMSProject">
         <activity
+            android:name=".AddGroupMember"
+            android:exported="false" />
+        <activity
             android:name=".DeleteGroup"
             android:exported="false" />
         <activity

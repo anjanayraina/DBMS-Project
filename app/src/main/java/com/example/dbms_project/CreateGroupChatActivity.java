@@ -81,6 +81,12 @@ hashMap = new HashMap<>();
             try {
                 createGroup(uID  , gname);
 
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            try {
+                addUser(uID , 1);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -130,13 +136,15 @@ return gID;
 
     }
 
+
+
     public void createGroup(String userID  , String gName  ) throws SQLException {
 
         Statement stmt = conn.createStatement();
         String query = String.format("insert into GroupChats(adminId , Groupname )  values (%s , '%s' )",
                 userID , gName  ) ;
         ResultSet res = stmt.executeQuery(query);
-        addUser(userID , 1);
+
 
     }
     public void checkForUser() throws SQLException {
