@@ -77,6 +77,7 @@ public class LandingScreenActivity extends AppCompatActivity {
         hashMap = (HashMap<String, String>) getIntent().getExtras().get("hashMap");
         groupChatHash = new ArrayList<>();
 
+
         while(true){
             try {
                 if (!res.next()) break;

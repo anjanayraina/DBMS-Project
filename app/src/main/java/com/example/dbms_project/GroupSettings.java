@@ -48,7 +48,7 @@ public class GroupSettings extends AppCompatActivity {
 
         String uid = getIntent().getStringExtra("userID");
 
-        String groupID = getIntent().getStringExtra("GroupID");
+        String groupID = getIntent().getStringExtra("groupChatID");
 
         try {
             Class.forName(className);

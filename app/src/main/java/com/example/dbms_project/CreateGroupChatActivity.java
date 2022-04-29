@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,7 +32,7 @@ public class CreateGroupChatActivity extends AppCompatActivity {
     //final String url = "jdbc:jtds:sqlserver://"+ip+":"+port+";"+"databasename" + dataBaseName + "; user="+ userName +";"+"password" ;
     final String url = "jdbc:jtds:sqlserver://" + ip + ":" + port + ";" + "databasename=" + dataBaseName + ";user=" + userName + ";password=" + password + ";";
     Connection conn = null;
-    String uid = "";
+
     public HashMap<String , String > hashMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +80,7 @@ hashMap = new HashMap<>();
             text.setVisibility(View.VISIBLE);
             try {
                 createGroup(uID  , gname);
+
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -117,10 +119,10 @@ hashMap = new HashMap<>();
 
         Statement stmt = conn.createStatement();
         String  gID= "";
-        String query = "select max(groupChatID) from Groupchats";
+        String query = "select max(groupChatID) as id from Groupchats";
         ResultSet res = stmt.executeQuery(query);
         while(res.next()){
-            gID = res.getString("GroupChatID");
+            gID = res.getString("id");
         }
 
 return gID;

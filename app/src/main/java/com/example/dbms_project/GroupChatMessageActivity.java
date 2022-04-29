@@ -77,6 +77,17 @@ Log.e("Error" , gID);
         String query = "select * from messages where groupChatID = " + gID;
         Statement stmt = null;
 
+        Button settings  = (Button)findViewById(R.id.button36);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(GroupChatMessageActivity.this , GroupSettings.class);
+                i.putExtra("groupChatID", gID);
+                i.putExtra("userID" , uid);
+                startActivity(i);
+
+            }
+        });
 
         try {
             stmt = conn.createStatement();

@@ -63,6 +63,15 @@ public class AllGroupList extends AppCompatActivity {
 
         Button array [] = new Button[8];
         Button newChat = findViewById(R.id.button14);
+Button refresh = (Button)findViewById(R.id.button24);
+Button settings = (Button) findViewById(R.id.button35);
+
+refresh.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        recreate();
+    }
+});
         newChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -56,7 +56,7 @@ public class DeleteGroup extends AppCompatActivity {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-          String query =  "exec groupcascade @ID = " + gID;
+          String query =  "exec groupchatcascade @groupid = " + gID;
         try {
             Toast.makeText(getApplicationContext() , "Group Deleted" , Toast.LENGTH_LONG);
             res = stmt.executeQuery(query);
